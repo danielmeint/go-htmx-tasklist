@@ -4,52 +4,80 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task List Manager</title>
-    <!-- Include Tailwind CSS and HTMX -->
-    <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- Include Bootstrap CSS and HTMX -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
   </head>
   <body id="task-list-manager">
     <!-- Task List -->
-    <div id="task-list" hx-get="/tasks" hx-swap="innerHTML" hx-trigger="load">
-      <!-- This div will be populated with tasks on page load -->
-    </div>
+    <section class="vh-100" style="background-color: #3da2c3">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-8 col-xl-6">
+            <div class="card rounded-3">
+              <div class="card-body p-4">
+                <p class="mb-2">
+                  <span class="h2 me-2">Task List Manager</span>
+                </p>
+                <p class="text-muted pb-2">Current Date and Time</p>
 
-    <!-- Create Task Form -->
-    <form
-      id="create-task-form"
-      hx-post="/create"
-      hx-target="#task-list"
-      hx-swap="innerHTML"
-    >
-      <input
-        type="text"
-        name="taskName"
-        placeholder="New task..."
-        required
-        class="mr-2"
-      />
-      <button type="submit">Add Task</button>
-    </form>
+                <!-- Task List (This div will be populated with tasks on page load) -->
+                <div
+                  id="task-list"
+                  hx-get="/tasks"
+                  hx-swap="innerHTML"
+                  hx-trigger="load"
+                >
+                  <!-- This div will be populated with tasks on page load -->
+                </div>
 
-    <!-- Clear All Tasks Button -->
-    <button
-      id="clear-tasks-button"
-      hx-post="/clear-all"
-      hx-confirm="Are you sure you want to clear all tasks?"
-      hx-target="#task-list"
-    >
-      Clear All Tasks
-    </button>
+                <!-- Create Task Form -->
+                <form
+                  id="create-task-form"
+                  hx-post="/create"
+                  hx-target="#task-list"
+                  hx-swap="innerHTML"
+                >
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      name="taskName"
+                      placeholder="New task..."
+                      required
+                      class="form-control"
+                    />
+                    <button type="submit" class="btn btn-primary">
+                      Add Task
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Clear All Tasks Button -->
+                <button
+                  id="clear-tasks-button"
+                  hx-post="/clear-all"
+                  hx-confirm="Are you sure you want to clear all tasks?"
+                  hx-target="#task-list"
+                  class="btn btn-danger"
+                >
+                  Clear All Tasks
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Include htmx library here -->
     <script src="https://unpkg.com/htmx.org@1.6.0/dist/htmx.min.js"></script>
 
+    <!-- Include Bootstrap JavaScript here (if needed) -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
