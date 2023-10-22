@@ -10,6 +10,7 @@
 
 # sqlite database files
 *.sqlite3
+tasklist.db
 
 # Test binary, built with `go test -c`
 *.test
