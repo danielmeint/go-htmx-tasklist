@@ -44,6 +44,19 @@ This is a simple interactive web application built with Go, htmx, and Bootstrap.
 
 5. Access the application in your web browser at [http://localhost:8080](http://localhost:8080).
 
+## Troubleshooting
+
+**Database connection error?** The SQLite driver requires CGO to be enabled:
+```bash
+go env -w CGO_ENABLED=1
+```
+
+If you're missing build tools:
+- Ubuntu/Debian: `sudo apt-get install build-essential`
+- macOS: `xcode-select --install`
+
+The database file (`tasklist.db`) is created automatically on first run.
+
 ## Usage
 
 - Create a new task: Enter a task name in the input field and click "Add Task."
